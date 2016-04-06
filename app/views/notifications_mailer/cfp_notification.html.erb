@@ -1,0 +1,11 @@
+<h1>Dear Subscriber,</h1>
+
+<p>This mail is regarding Call For Proposals for <%= @conference.title %>, happening from <%= @conference.from_date.to_formatted_s(:long) %> to <%= @conference.to_date.to_formatted_s(:long) %> at <%= @conference.venue_city %>, <%= @conference.venue_country %></p>
+
+<p>For more details visit -</p>
+<a href="<%= @conference.url %> "><%= @conference.title %></a>
+
+<p>Thanks,</p>
+<p>Coference Buzz</p><br>
+<hr/>
+<p>This is a System Generated Email. Do Not Reply to this email.</p>

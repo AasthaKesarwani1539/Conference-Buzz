@@ -1,0 +1,60 @@
+<div class="page-header">
+  <h1>Conferences</h1>
+</div>
+<div class="row">
+  <div class="col-xs-2">
+    <h4>Filter By Topic</h4>
+    <ul>
+      <li><a href="allTopics" class="doNotFilter" value="allTopics">All Topics</a></li>
+      <% @topics.each do |topic| %>
+        <li><a href="<%= topic.name.gsub(' ','') %>" class="topicFilter" value="<%= topic.name.gsub(' ','') %>"><%= topic.name %></a></li>
+      <% end %>
+    </ul>
+<!--     <h4>Filter by CFP status</h4>
+    <ul>
+      <li><a href = "allCFP" class="noFilter-cfp" value="allCFP">All</a></li>
+      <li><a href="cfpOpen" class="cfpFilter" value="cfpOpen">CFP Open</a></li>
+      <li><a href="cfpClosed" class="cfpFilter" value="cfpClosed">CFP Closed</a></li>
+    </ul> -->
+    <br>
+    <%= link_to 'New Conference', new_conference_path,:class=>"btn btn-primary" %>
+  </div>
+  <div class="col-xs-10">
+    <table class="table table-striped datatable" id="conferences">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Venue</th>
+          <th>CFP opens</th>
+          <th>CFP closes</th>
+          <th>Created by</th>
+          <th>Topic</th>
+          <th class="hiddenResult"></th>
+          <th class="hiddenResult"></th>
+          <th class="hiddenResult"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @conferences.each do |conference| %>
+          <% topics_list = conference.topics.map(&:name).join(',').gsub(' ','') %>
+          <tr class="topics_<%= topics_list %>">
+            <td><%= link_to conference.title, conference.url,:only_path => false %></td>
+            <td><%= conference.from_date.to_formatted_s(:long) %></td>
+            <td><%= conference.to_date.to_formatted_s(:long) %></td>
+            <td><%= conference.venue_city %>,&nbsp<%= conference.venue_country %></td>
+            <td><%= conference.cfp_opens_on.to_formatted_s(:long) %></td>
+            <td><%= conference.cfp_closes_on.to_formatted_s(:long) %></td>
+            <td><%= mail_to conference.created_by_email, conference.created_by %></td>
+            <td><%= topics_list %></td>
+            <td><%= link_to 'Show', conference, :class => "btn btn-xs btn-primary" %></td>
+            <td><%= link_to 'Edit', edit_conference_path(conference), :class => "btn btn-xs btn-primary" %></td>
+            <td><%= link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

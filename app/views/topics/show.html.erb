@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-header">
+  <h1 class="blog-title"><%= @topic.name.humanize %></h1>
+</div>
+<% @conferences.each do |conference| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= link_to conference.title, conference.url,:only_path => false %></h3>
+    </div>
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Venue</th>
+            <th>CFP opens</th>
+            <th>CFP closes</th>
+            <th>Created by</th>
+            <th>Topic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= conference.from_date.to_formatted_s(:long) %></td>
+            <td><%= conference.to_date.to_formatted_s(:long) %></td>
+            <td><%= conference.venue_city %>,&nbsp<%= conference.venue_country %></td>
+            <td><%= conference.cfp_opens_on.to_formatted_s(:long) %></td>
+            <td><%= conference.cfp_closes_on.to_formatted_s(:long) %></td>
+            <td><%= mail_to conference.created_by_email, conference.created_by %></td>
+            <td><%= conference.topics.map(&:name).join(',').gsub(' ','') %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
+<%= link_to 'Back', topics_path %>

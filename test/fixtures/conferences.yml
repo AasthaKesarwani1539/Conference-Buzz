@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  url: MyString
+  from_date: 2014-07-05
+  to_date: 2014-07-05
+  venue_city: MyString
+  venue_country: MyString
+  cfp_opens_on: 2014-07-05
+  cfp_closes_on: 2014-07-05
+  created_by: MyString
+  created_by_email: MyString
+  topic_id: 
+
+two:
+  title: MyString
+  url: MyString
+  from_date: 2014-07-05
+  to_date: 2014-07-05
+  venue_city: MyString
+  venue_country: MyString
+  cfp_opens_on: 2014-07-05
+  cfp_closes_on: 2014-07-05
+  created_by: MyString
+  created_by_email: MyString
+  topic_id: 

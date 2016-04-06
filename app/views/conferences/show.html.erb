@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @conference.title %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @conference.url %>
+</p>
+
+<p>
+  <strong>From date:</strong>
+  <%= @conference.from_date %>
+</p>
+
+<p>
+  <strong>To date:</strong>
+  <%= @conference.to_date %>
+</p>
+
+<p>
+  <strong>Venue city:</strong>
+  <%= @conference.venue_city %>
+</p>
+
+<p>
+  <strong>Venue country:</strong>
+  <%= @conference.venue_country %>
+</p>
+
+<p>
+  <strong>Cfp opens on:</strong>
+  <%= @conference.cfp_opens_on %>
+</p>
+
+<p>
+  <strong>Cfp closes on:</strong>
+  <%= @conference.cfp_closes_on %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @conference.created_by %>
+</p>
+
+<p>
+  <strong>Created by email:</strong>
+  <%= @conference.created_by_email %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @conference.topics.map(&:name).join(',').gsub(' ','') %>
+</p>
+
+<%= link_to 'Edit', edit_conference_path(@conference) %> |
+<%= link_to 'Back', conferences_path %>

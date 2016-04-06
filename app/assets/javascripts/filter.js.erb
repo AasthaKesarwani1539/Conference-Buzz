@@ -1,0 +1,27 @@
+$(document).ready(function(){
+  $(".topicFilter").click(function(event){
+    event.preventDefault();
+    var topicVal = $(this).attr("href");
+    $("tr").addClass("hiddenResult");
+    $('.datatable tr').each(function(){
+      var classes = $(this).attr('class');
+      var classNames = String(classes).split(' ');
+      var topics = '';
+      $.each(classNames,function(key,value){
+        if (value.indexOf('topics') > -1) {
+          topics = value.split('_').pop();
+        };
+      });
+      if(topics.indexOf(topicVal) > -1){
+        $(this).removeClass("hiddenResult");
+        $(this).addClass("activeFilter");
+      }
+    });
+  });
+
+  $(".doNotFilter").click(function(event){
+    event.preventDefault();
+    $("tr").removeClass("hiddenResult");
+    $(".topicFilter").removeClass("activeFilter");
+  });
+});
