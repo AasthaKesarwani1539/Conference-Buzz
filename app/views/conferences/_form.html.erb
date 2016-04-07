@@ -1,0 +1,65 @@
+<%= form_for(@conference) do |f| %>
+  <% if @conference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conference.errors.count, "error") %> prohibited this conference from being saved:</h2>
+
+      <ul>
+      <% @conference.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :from_date %><br>
+    <%= f.date_select :from_date %>
+  </div>
+  <div class="field">
+    <%= f.label :to_date %><br>
+    <%= f.date_select :to_date %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_city %><br>
+    <%= f.text_field :venue_city %>
+  </div>
+  <div class="field">
+    <%= f.label :venue_country %><br>
+    <%= f.text_field :venue_country %>
+  </div>
+  <div class="field">
+    <%= f.label :cfp_opens_on %><br>
+    <%= f.date_select :cfp_opens_on %>
+  </div>
+  <div class="field">
+    <%= f.label :cfp_closes_on %><br>
+    <%= f.date_select :cfp_closes_on %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by %><br>
+    <%= f.text_field :created_by %>
+  </div>
+  <div class="field">
+    <%= f.label :created_by_email %><br>
+    <%= f.text_field :created_by_email %>
+  </div>
+  <div class="field">
+    <%= label_tag :topic_id %><br>
+    <% topics = Topic.all %>
+    <%= hidden_field_tag :topic_list %>
+    <% topics.each do |topic| %>
+      <div><%= check_box_tag("topic_id_#{topic.id}", topic.id, false, class: 'topic_selector' ) %><%= topic.name %></div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-primary"  %>
+  </div>
+<% end %>

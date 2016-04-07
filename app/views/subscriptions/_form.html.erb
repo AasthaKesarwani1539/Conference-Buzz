@@ -1,0 +1,30 @@
+<%= form_for(@subscription) do |f| %>
+  <% if @subscription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+      <ul>
+      <% @subscription.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_id %><br>
+    <!--<%= f.select :topic, options_from_collection_for_select(Topic.all, 'id', 'name') %> -->
+    <% topics = Topic.all %>
+    <%= hidden_field_tag :topic_list %>
+    <% topics.each do |topic| %>
+      <div><%= check_box_tag("topic_id_#{topic.id}", topic.id, false, class: 'topic_selector' ) %><%= topic.name %></div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class =>"btn btn-primary" %>
+  </div>
+<% end %>

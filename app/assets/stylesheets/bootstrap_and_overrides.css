@@ -1,0 +1,32 @@
+body {
+  padding-top: 60px;
+}
+
+a.btn,
+a.btn:link,
+a.btn:hover,
+a.btn:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+.hiddenResult {
+  display:none;
+}
+
+li {
+  list-style: none;
+}
+
+li > a {
+  color: grey;
+}
+
+.activveFilter {
+  color: black;
+}
+
+#conferences_info{
+  display:none;
+}
+
