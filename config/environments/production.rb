@@ -93,7 +93,7 @@ Rails.application.configure do
     authentication:       "plain",
     user_name:            "conference.buzz@gmail.com",
     password:             ENV['SMTP_PASSWORD'],
-    enable_starttls_auto: false
+    enable_starttls_auto: true
   }
   config.action_mailer.raise_delivery_errors = true
 end
