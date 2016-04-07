@@ -79,21 +79,22 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)   
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.perform_deliveries = true
-  ActionMailer::Base.raise_delivery_errors = true
+  # Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)   
+  # ActionMailer::Base.delivery_method = :smtp
+  # ActionMailer::Base.perform_deliveries = true
+  # ActionMailer::Base.raise_delivery_errors = true
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              "smtp.gmail.com",
-    port:                 587,
-    authentication:       "plain",
-    user_name:            "conference.buzz@gmail.com",
-    password:             ENV['SMTP_PASSWORD'],
-    enable_starttls_auto: false
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              "smtp.gmail.com",
+  #   port:                 587,
+  #   authentication:       "plain",
+  #   user_name:            "conference.buzz@gmail.com",
+  #   password:             ENV['SMTP_PASSWORD'],
+  #   enable_starttls_auto: false
+  # }
+  config.action_mailer.delivery_method = :sparkpost
   config.action_mailer.raise_delivery_errors = true
 end
